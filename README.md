@@ -1,4 +1,4 @@
-# finpilot
+# neptuno-beta
 
 A template for building custom bootc operating system images based on the lessons from [Universal Blue](https://universal-blue.org/) and [Bluefin](https://projectbluefin.io). It is designed to be used manually, but is optimized to be bootstraped by GitHub Copilot. After set up you'll have your own custom Linux. 
 
@@ -67,7 +67,7 @@ Click "Use this template" to create a new repository from this template.
 
 ### 2. Rename the Project
 
-Important: Change `finpilot` to your repository name in these 6 files:
+Important: Change `neptuno-beta` to your repository name in these 6 files:
 
 1. `Containerfile` (line 4): `# Name: your-repo-name`
 2. `Justfile` (line 1): `export image_name := env("IMAGE_NAME", "your-repo-name")`
@@ -80,6 +80,7 @@ Important: Change `finpilot` to your repository name in these 6 files:
 
 - Go to the "Actions" tab in your repository
 - Click "I understand my workflows, go ahead and enable them"
+- Ensure all workflows (build, clean, renovate, and validation workflows) are enabled.
 
 Your first build will start automatically! 
 
