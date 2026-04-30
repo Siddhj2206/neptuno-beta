@@ -10,6 +10,25 @@ This template uses the **multi-stage build architecture** from , combining resou
 
 > Be the one who moves, not the one who is moved.
 
+## What Makes neptuno-beta Different?
+
+Here are the changes from Universal Blue's base images. This image is based on Fedora Silverblue with GNOME and includes these customizations:
+
+### Added Packages (Build-time)
+- **System packages**: None added yet - ready for your customizations
+
+### Added Applications (Runtime)
+- **CLI Tools (Homebrew)**: None added yet - customize via custom/brew/
+- **GUI Apps (Flatpak)**: None added yet - customize via custom/flatpaks/
+
+### Removed/Disabled
+- None removed from base image
+
+### Configuration Changes
+- None changed from base image - ready for your customizations
+
+*Last updated: April 30, 2026*
+
 ## Guided Copilot Mode
 
 Here are the steps to guide copilot to make your own repo, or just use it like a regular image template.
