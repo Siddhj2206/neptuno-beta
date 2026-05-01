@@ -4,10 +4,7 @@
 # See: https://docs.flatpak.org/en/latest/flatpak-command-reference.html#flatpak-preinstall
 
 # Web Browsers
-[Flatpak Preinstall org.mozilla.firefox]
-Branch=stable
-
-[Flatpak Preinstall org.mozilla.Thunderbird]
+[Flatpak Preinstall app.zen_browser.zen]
 Branch=stable
 
 # GNOME Core Applications
@@ -88,7 +85,7 @@ Branch=stable
 [Flatpak Preinstall io.github.flattool.Ignition]
 Branch=stable
 
-[Flatpak Preinstall io.missioncenter.MissionCenter]
+[Flatpak Preinstall net.nokyan.Resources]
 Branch=stable
 
 [Flatpak Preinstall io.gitlab.adhami3310.Impression]
@@ -102,6 +99,9 @@ Branch=stable
 Branch=stable
 
 [Flatpak Preinstall page.tesk.Refine]
+Branch=stable
+
+[Flatpak Preinstall it.mijorus.gearlever]
 Branch=stable
 
 # GTK Themes (runtimes)

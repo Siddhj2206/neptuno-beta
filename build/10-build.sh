@@ -19,10 +19,15 @@ shopt -s nullglob
 echo "::group:: Copy Bluefin Config from Common"
 
 # Copy just files from @projectbluefin/common (includes 00-entry.just which imports 60-custom.just)
-mkdir -p /usr/share/ublue-os/just/
-shopt -s nullglob
-cp -r /ctx/oci/common/bluefin/usr/share/ublue-os/just/* /usr/share/ublue-os/just/
-shopt -u nullglob
+# mkdir -p /usr/share/ublue-os/just/
+# shopt -s nullglob
+# cp -r /ctx/oci/common/bluefin/usr/share/ublue-os/just/* /usr/share/ublue-os/just/
+# shopt -u nullglob
+
+rsync -rvK /ctx/oci/brew/ /
+rsync -rvK /ctx/oci/common/shared/ /
+rsync -rvK /ctx/oci/common/bluefin/ /
+rsync -rvK /ctx/custom/files/ /
 
 echo "::endgroup::"
 
@@ -33,7 +38,7 @@ mkdir -p /usr/share/ublue-os/homebrew/
 cp /ctx/custom/brew/*.Brewfile /usr/share/ublue-os/homebrew/
 
 # Consolidate Just Files
-find /ctx/custom/ujust -iname '*.just' -exec printf "\n\n" \; -exec cat {} \; >> /usr/share/ublue-os/just/60-custom.just
+find /ctx/custom/ujust -iname '*.just' -exec printf "\n\n" \; -exec cat {} \; >>/usr/share/ublue-os/just/60-custom.just
 
 # Copy Flatpak preinstall files
 mkdir -p /etc/flatpak/preinstall.d/
@@ -81,6 +86,7 @@ FEDORA_PACKAGES=(
     libgda-sqlite
     libimobiledevice
     libratbag-ratbagd
+    libwayland-server
     libxcrypt-compat
     lm_sensors
     make
@@ -106,6 +112,7 @@ FEDORA_PACKAGES=(
     sssd-nfs-idmap
     switcheroo-control
     tmux
+    unzip
     usbip
     usbmuxd
     waypipe
@@ -181,8 +188,15 @@ echo "::endgroup::"
 echo "::group:: System Configuration"
 
 # Enable/disable systemd services
-systemctl enable podman.socket
+# systemctl enable podman.socket
 # Example: systemctl mask unwanted-service
+systemctl --global enable podman-auto-update.timer
+systemctl --global enable ublue-user-setup.service
+systemctl enable brew-setup.service
+systemctl enable dconf-update.service
+systemctl enable tailscaled.service
+systemctl enable ublue-system-setup.service
+systemctl enable flatpak-preinstall.service
 
 echo "::endgroup::"
 
