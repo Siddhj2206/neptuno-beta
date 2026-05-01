@@ -209,7 +209,7 @@ Ready to take your custom OS to production? Enable these features for enhanced s
 
 ### Production Checklist
 
-- [ ] **Enable Image Signing** (Recommended)
+- [x] **Enable Image Signing** (Recommended)
   - Provides cryptographic verification of your images
   - Prevents tampering and ensures authenticity
   - See "Optional: Enable Image Signing" section above for setup instructions
