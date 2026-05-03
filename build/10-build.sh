@@ -50,78 +50,78 @@ echo "::group:: Install Packages"
 
 # Base packages from Fedora repos - common to all versions
 FEDORA_PACKAGES=(
-    adcli
-    adw-gtk3-theme
-    adwaita-fonts-all
-    autofs
-    bash-color-prompt
-    bcache-tools
-    bootc
-    borgbackup
-    chromium
-    containerd
-    cryfs
-    davfs2
-    ddcutil
-    evtest
-    fastfetch
-    firewall-config
-    fish
-    foo2zjs
-    fuse-encfs
-    gcc
-    git-credential-libsecret
-    glow
-    gnome-tweaks
-    gum
-    hplip
-    ibus-mozc
-    ifuse
-    igt-gpu-tools
-    iwd
-    jetbrains-mono-fonts-all
-    just
-    krb5-workstation
-    libgda
-    libgda-sqlite
-    libimobiledevice
-    libratbag-ratbagd
-    libwayland-server
-    libxcrypt-compat
-    lm_sensors
-    make
-    mesa-libGLU
-    mozc
-    nautilus-gsconnect
-    opendyslexic-fonts
-    openssh-askpass
-    powerstat
-    powertop
-    printer-driver-brlaser
-    pulseaudio-utils
-    python3-pip
-    python3-pygit2
-    rclone
-    restic
-    samba
-    samba-dcerpc
-    samba-ldb-ldap-modules
-    samba-winbind-clients
-    samba-winbind-modules
-    setools-console
-    sssd-nfs-idmap
-    switcheroo-control
-    tmux
-    unzip
-    usbip
-    usbmuxd
-    waypipe
-    wireguard-tools
-    wl-clipboard
-    xdg-terminal-exec
-    xprop
-    zenity
-    zsh
+	adcli
+	adw-gtk3-theme
+	adwaita-fonts-all
+	autofs
+	bash-color-prompt
+	bcache-tools
+	bootc
+	borgbackup
+	chromium
+	containerd
+	cryfs
+	davfs2
+	ddcutil
+	evtest
+	fastfetch
+	firewall-config
+	fish
+	foo2zjs
+	fuse-encfs
+	gcc
+	git-credential-libsecret
+	glow
+	gnome-tweaks
+	gum
+	hplip
+	ibus-mozc
+	ifuse
+	igt-gpu-tools
+	iwd
+	jetbrains-mono-fonts-all
+	just
+	krb5-workstation
+	libgda
+	libgda-sqlite
+	libimobiledevice
+	libratbag-ratbagd
+	libwayland-server
+	libxcrypt-compat
+	lm_sensors
+	make
+	mesa-libGLU
+	mozc
+	nautilus-gsconnect
+	opendyslexic-fonts
+	openssh-askpass
+	powerstat
+	powertop
+	printer-driver-brlaser
+	pulseaudio-utils
+	python3-pip
+	python3-pygit2
+	rclone
+	restic
+	samba
+	samba-dcerpc
+	samba-ldb-ldap-modules
+	samba-winbind-clients
+	samba-winbind-modules
+	setools-console
+	sssd-nfs-idmap
+	switcheroo-control
+	tmux
+	unzip
+	usbip
+	usbmuxd
+	waypipe
+	wireguard-tools
+	wl-clipboard
+	xdg-terminal-exec
+	xprop
+	zenity
+	zsh
 )
 
 # Install all Fedora packages (bulk - safe from COPR injection)
@@ -141,37 +141,37 @@ copr_install_isolated "ublue-os/packages" "uupd"
 
 # Packages to exclude - common to all versions
 EXCLUDED_PACKAGES=(
-    cosign
-    fedora-bookmarks
-    fedora-chromium-config
-    fedora-chromium-config-gnome
-    firefox
-    firefox-langpacks
-    gnome-extensions-app
-    gnome-shell-extension-background-logo
-    gnome-software
-    gnome-software-rpm-ostree
-    gnome-terminal-nautilus
-    podman-docker
-    yelp
+	cosign
+	fedora-bookmarks
+	fedora-chromium-config
+	fedora-chromium-config-gnome
+	firefox
+	firefox-langpacks
+	gnome-extensions-app
+	gnome-shell-extension-background-logo
+	gnome-software
+	gnome-software-rpm-ostree
+	gnome-terminal-nautilus
+	podman-docker
+	yelp
 )
 
 # Remove excluded packages if they are installed
 if [[ "${#EXCLUDED_PACKAGES[@]}" -gt 0 ]]; then
-    readarray -t INSTALLED_EXCLUDED < <(rpm -qa --queryformat='%{NAME}\n' "${EXCLUDED_PACKAGES[@]}" 2>/dev/null || true)
-    if [[ "${#INSTALLED_EXCLUDED[@]}" -gt 0 ]]; then
-        dnf5 -y remove "${INSTALLED_EXCLUDED[@]}"
-    else
-        echo "No excluded packages found to remove."
-    fi
+	readarray -t INSTALLED_EXCLUDED < <(rpm -qa --queryformat='%{NAME}\n' "${EXCLUDED_PACKAGES[@]}" 2>/dev/null || true)
+	if [[ "${#INSTALLED_EXCLUDED[@]}" -gt 0 ]]; then
+		dnf5 -y remove "${INSTALLED_EXCLUDED[@]}"
+	else
+		echo "No excluded packages found to remove."
+	fi
 fi
 
 # Fix for ID in fwupd
 dnf5 -y copr enable ublue-os/staging
 dnf5 -y copr disable ublue-os/staging
 dnf5 -y swap \
-    --repo=copr:copr.fedorainfracloud.org:ublue-os:staging \
-    fwupd fwupd
+	--repo=copr:copr.fedorainfracloud.org:ublue-os:staging \
+	fwupd fwupd
 
 ## Pins and Overrides
 ## Use this section to pin packages in order to avoid regressions

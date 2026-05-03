@@ -54,7 +54,7 @@ sed -i "s|^VERSION=.*|VERSION=\"${VERSION} (${BASE_IMAGE_NAME^})\"|" /usr/lib/os
 sed -i "s|^OSTREE_VERSION=.*|OSTREE_VERSION=\'${VERSION}\'|" /usr/lib/os-release
 
 if [[ -n "${SHA_HEAD_SHORT:-}" ]]; then
-    echo "BUILD_ID=\"$SHA_HEAD_SHORT\"" >>/usr/lib/os-release
+	echo "BUILD_ID=\"$SHA_HEAD_SHORT\"" >>/usr/lib/os-release
 fi
 
 # Added in systemd 249.
