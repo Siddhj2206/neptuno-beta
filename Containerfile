@@ -76,11 +76,11 @@ FROM ghcr.io/ublue-os/silverblue-main:latest@sha256:fcaaf8bc943abfcfdc340812dba4
 ##   - Files from @ublue-os/brew at /oci/brew
 ## Scripts are run in numerical order (10-build.sh, 20-example.sh, etc.)
 
-RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
-    --mount=type=cache,dst=/var/cache \
-    --mount=type=cache,dst=/var/log \
-    --mount=type=tmpfs,dst=/tmp \
-    /ctx/build/00-image-info.sh
+# RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
+#     --mount=type=cache,dst=/var/cache \
+#     --mount=type=cache,dst=/var/log \
+#     --mount=type=tmpfs,dst=/tmp \
+#     /ctx/build/00-image-info.sh
 
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
